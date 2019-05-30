@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Android Just For Testing Suite" configfailurepolicy="continue" verbose="2">
+    <test name="Android Just For Testing">
+        <parameter name="os" value="android" />
+        <parameter name="fileName" value="gospel-library-release.apk" />
+        <parameter name="testDevice" value="ce06171675347c0b027e" />
+<!--        <parameter name="testDevice" value="emulator-5554" />-->
+        <parameter name="startSleepTime" value="0200" />
+
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="jft"/>-->
+<!--            </run>-->
+<!--        </groups>-->
+
+        <classes>
+            <class name="AppiumMavenGospelLibInterview.BaseDriver" />
+            <class name="AppiumMavenGospelLibInterview.SimpleTest" />
+
+        </classes>
+    </test > <!-- Default test -->
+</suite> <!-- Default suite -->
