@@ -1,6 +1,6 @@
-package AppiumMavenGospelLibInterview;
+package AppiumCucumberGospelLib;
 
-import AppiumMavenGospelLibInterview.Screen.SimpleTestScreen;
+import AppiumCucumberGospelLib.Screen.SimpleTestScreen;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 

@@ -1,15 +1,13 @@
-package AppiumMavenGospelLibInterview.Screen;
+package AppiumCucumberGospelLib.Screen;
 
-import AppiumMavenGospelLibInterview.BasePage;
+import AppiumCucumberGospelLib.BasePage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class SimpleTestScreen extends BasePage {
 
@@ -30,6 +28,15 @@ public class SimpleTestScreen extends BasePage {
     @AndroidFindBy(id = "messageTextView")
     public MobileElement startupMessageText;
 
+
+    //******* Updating Gospel Library **********
+    //Skip Button
+    @AndroidFindBy(id= "skip")
+    public MobileElement skipButton;
+
+    //Done Button
+    @AndroidFindBy(id= "done")
+    public MobileElement doneButton;
 
 
 

@@ -1,4 +1,4 @@
-package AppiumMavenGospelLibInterview;
+package AppiumCucumberGospelLib;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AppiumService {
 	public static AppiumDriverLocalService myAppiumService;

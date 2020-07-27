@@ -1,8 +1,10 @@
-package AppiumMavenGospelLibInterview;
+package AppiumCucumberGospelLib;
+
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.cucumber.testng.*;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -15,25 +17,40 @@ import java.net.SocketException;
 import java.net.URL;
 import java.util.*;
 
-public class BaseDriver {
-    public AppiumDriver<MobileElement> driver;
+
+@CucumberOptions(
+//        features = "src/test/java/features",
+//        glue = {"AppiumCucumberGospelLib"},
+//        tags = {"@works"},
+//        plugin = {
+//                "pretty",
+//                "html:target/cucumber-reports/cucumber-pretty",
+//                "json:target/cucumber-reports/CucumberTestReport.json",
+//                "rerun:target/cucumber-reports/rerun.txt"
+//        }
+        )
+public class BaseDriver extends AbstractTestNGCucumberTests {
+    public static AppiumDriver<MobileElement> driver;
     public String testOS = "";
     public AppiumService myAppiumService = new AppiumService();
 
     protected GospelLibApp app;
 
     public String androidAppPackage = "org.lds.ldssa";
-
+    private TestNGCucumberRunner testNGCucumberRunner;
 
 
     @BeforeClass(alwaysRun = true)
     @Parameters({"os", "fileName", "testDevice", "startSleepTime"})
     public void setUp(String os, String fileName, String testDevice, int startSleepTime) throws Exception {
+        testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
+
 
         int myPort;
         testOS = os;
 
         //Sleep so when multiple tests start they don't break
+        System.out.println("Before Class" );
         System.out.println("Sleep Time: " + startSleepTime);
         Thread.sleep(startSleepTime);
 
@@ -47,13 +64,19 @@ public class BaseDriver {
 
         app = new GospelLibApp(driver);
 
+
         
     }
-
+//
+//    @Test
+//    public void testRunner() {
+//        System.out.println("Just a test");
+//    }
 
 
     @AfterMethod(alwaysRun = true)
     public void teardown(ITestResult result) throws Exception {
+        System.out.println("After Method" );
         BasePage myBasePage = new BasePage(driver);
         String testName;
 
@@ -65,8 +88,10 @@ public class BaseDriver {
 
 
 
+
     @AfterSuite(alwaysRun = true)
     public void afterAllTests() throws Exception {
+        System.out.println("After Suite" );
         myAppiumService.stopAppiumService();
 
         Thread.sleep(1000);

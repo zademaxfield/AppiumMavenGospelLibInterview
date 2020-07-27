@@ -1,32 +1,15 @@
-package AppiumMavenGospelLibInterview;
+package AppiumCucumberGospelLib;
 
 
 import io.appium.java_client.*;
-import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Attribute;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class BasePage {
     public AppiumDriver<MobileElement> driver;
@@ -43,7 +26,7 @@ public class BasePage {
         wait.until(ExpectedConditions.invisibilityOf(myElement));
     }
 
-    public void waitUnitlTextIsGone(String myText) {
+    public void waitUntilTextIsGone(String myText) {
         WebDriverWait wait = new WebDriverWait(driver, 300);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(@text, '" + myText + "')]")));
 
@@ -83,6 +66,11 @@ public class BasePage {
         osName = osName.toLowerCase();
         //System.out.println("OS: " + osName);
         return osName;
+    }
+
+    public void waitForText(String myText) {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@text, '" + myText + "')]")));
     }
 
 
